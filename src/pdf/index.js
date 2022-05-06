@@ -1,12 +1,21 @@
-import { Document, Page, Text, View } from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet } from "@react-pdf/renderer";
+
+const styles = StyleSheet.create({
+  page: { backgroundColor: 'tomato' },
+  section: { color: 'white', textAlign: 'center', margin: 30 }
+});
 
 export const MyPdf = () => {
   return (
     <Document>
-      <Page size="A4">
-        <View>
-          <Text>Section #1</Text>
-        </View>
+      <Page style={styles.page} size="A4">
+        {
+          Array.from(Array(10).keys())
+            .map((i) => (
+            <View style={styles.section}>
+              <Text>Marcão {i}</Text>
+            </View>))
+        }
         <View>
           <Text>Section #2</Text>
         </View>
